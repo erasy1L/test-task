@@ -93,7 +93,7 @@ func (h *Handler) Authenticate(w http.ResponseWriter, r *http.Request) {
 
 	response, err := h.userService.Authenticate(r.Context(), guid)
 	if err != nil {
-		w.WriteHeader(http.StatusInternalServerError)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 		log.Println(err, "Error while authenticating user")
 		return
 	}

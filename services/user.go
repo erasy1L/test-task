@@ -37,7 +37,7 @@ func (u *UserService) Authenticate(ctx context.Context, guid string) (models.Tok
 		return u.createSession(ctx, guid)
 	}
 
-	return models.Tokens{}, errors.New("a session already exists for this user")
+	return models.Tokens{}, errors.New("user not found or session already exists for this user")
 }
 
 func (u *UserService) Refresh(refreshToken string) (models.Tokens, error) {
